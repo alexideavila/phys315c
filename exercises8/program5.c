@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
+//have to modify to find smallest odd psuedoprimes
+//for all bases 2 through 10
+//use nested for loops
+
 long powermod(long,long,long);
 long fermat(long,long);
 long rnd(long n);
@@ -9,24 +13,30 @@ long primeq(long n);
 
 int main(void)
 {
-  long a, p;
+  long a=0, p=0;
+
   srand((unsigned)time(NULL)); /* seed random number generator */
   printf("This program implements Fermat's Little Theorem to ");
-  printf("test if a number p is prime.\n");
-  printf("Enter the number p and base a separated by spaces: ");
-  scanf("%ld %ld",&p,&a);
-  
-  if (fermat(a,p)==1) {
-    printf("\n%ld is a base-%ld probable prime ",p,a);
-  
-  if (primeq(p)==0) printf("but it's not prime!\n");
-  else printf("and it's probably prime.\n");
-  
-  }
-
-  else printf("%ld is composite.\n",p);
-  
-  return 0;
+  printf("test if a number p is prime and to find the smallest ");
+  printf("odd psuedoprimes for all bases 2 through 10.\n");
+//  printf("Enter the number p and base a separated by spaces: ");
+//  scanf("%ld %ld",&p,&a);
+	for(int i=1; i<=10; i++){
+		p = (2*i)+1;
+		for(int j=1; j<=5; j++){
+			a=(2*j);
+			  if (fermat(a,p)==1) {
+ 			 		 if (primeq(p)==0){
+						printf("%ld is a base-%ld probable prime ",p,a);
+ 						printf("but it's not prime!\n");
+						break;}
+ 			 		 else continue;
+ 			 }
+ 			 else continue;
+		}
+	}
+  printf("\n"); 
+ return 0;
 }
 
 long fermat(long a, long p)

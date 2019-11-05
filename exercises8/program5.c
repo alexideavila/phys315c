@@ -14,21 +14,24 @@ long primeq(long n);
 int main(void)
 {
   long a=0, p=0;
-
+  int test=0;
   srand((unsigned)time(NULL)); /* seed random number generator */
   printf("This program implements Fermat's Little Theorem to ");
   printf("test if a number p is prime and to find the smallest ");
   printf("odd psuedoprimes for all bases 2 through 10.\n");
 //  printf("Enter the number p and base a separated by spaces: ");
 //  scanf("%ld %ld",&p,&a);
-	for(int i=1; i<=10; i++){
-		p = (2*i)+1;
-		for(int j=1; j<=5; j++){
-			a=(2*j);
+	for(int i=2; i<=10; i++){
+		a = i;
+		if(test){
+			continue;}
+		for(int j=1; j<=1000; j++){
+			p=(2*j)+1;
 			  if (fermat(a,p)==1) {
  			 		 if (primeq(p)==0){
 						printf("%ld is a base-%ld probable prime ",p,a);
  						printf("but it's not prime!\n");
+						test=0;
 						break;}
  			 		 else continue;
  			 }

@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAXDATA 10
+#define MAXDATA 100
 void readfile(double*, double*, double*, int*);
 
 int main(){
     double firstColumn[MAXDATA]={};
     double secondColumn[MAXDATA]={};
     double sigmaStuff[MAXDATA]={};
-    int * entries1;
-    readfile(firstColumn,secondColumn,sigmaStuff,entries1);
+    int entries1;
+    readfile(firstColumn,secondColumn,sigmaStuff,&entries1);
 	
 	//printing stuff
-	for(int i=0; i<=(*entries1-1); i++){
+	for(int i=0; i<=(entries1-1); i++){
 		printf("%g  %g\n", firstColumn[i], secondColumn[i]);
 	}
     return 0;
@@ -34,7 +34,6 @@ determine the value of entries */
 // Assume data file contains 2 columns of data with no header
     while (*entries<MAXDATA &&
     fscanf(data,"%lf %lf",&x[*entries],&y[*entries])==2) {
-	if(sigma[*entries]) break;
     sigma[*entries]=1;
     (*entries)++;
     }

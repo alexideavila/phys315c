@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<math>
+
 #define i 10
 void linearfit(double*,double*,double*,double*,int);
 
@@ -9,7 +11,7 @@ int main(){
     double first[i];
     double second[i];
     double sigma[i];
-    double parameter[i];
+    double parameter[5];
     int entries=10;
     for(int j=0; j<10; j++){
         first[j]=rand() % 11;
@@ -28,7 +30,16 @@ parameter[0] = linear coefficient
 parameter[1] = uncertainty in linear coefficient
 parameter[2] = constant coefficient
 parameter[3] = uncertainty in constant coefficient
-parameter[4] = chi-square */
+parameter[4] = chi-square 
+chi-square=The sum from i=1 to N of ((yi-fxi)/sigmai)^2
+also
+sxy-asxx-bsx=0
+sy-asx-bs=0
+a=ssxy-sxsy/delta
+b=sxxsy-sxsxy/delta
+delta=ssxx-sx^2
+sigmaa^2=sum of i=1 to N (partialsa/partialsx)^2(sigmai^2) similarly for b
+*/
 double s=0, sx=0, sy=0, sxx=0, sxy=0, delta, f;
 int k;
 /* use a loop to calculate the values of s, sx, sy,
